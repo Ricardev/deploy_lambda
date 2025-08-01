@@ -38,7 +38,9 @@ jobs:
       -AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
     steps:
       - name: Checking credentials
-        run: echo $AWS_ACCESS_KEY_ID
+        run: echo "$AWS_ACCESS_KEY_ID"
+      - name: Verifying folders
+        run: ls
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Terraform
