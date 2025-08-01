@@ -24,6 +24,11 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Upload DLLs
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifacts
+        path: App/
   deploy:
     needs: build
     name: 'Terraform'
@@ -39,6 +44,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Download DLLs
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: App/
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
       - name: Terraform Init
