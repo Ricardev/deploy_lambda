@@ -39,7 +39,8 @@ jobs:
       - name: Checking credentials
         run: echo "$AWS_ACCESS_KEY_ID"
       - name: Verifying folders
-        run: ls
+        run: |
+          ls
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Terraform
