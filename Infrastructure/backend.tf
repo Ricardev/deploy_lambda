@@ -1,9 +1,4 @@
-﻿provider "aws" {
-  region = "sa-east-1"
-}
-
-
-terraform {
+﻿terraform {
   required_providers {
     aws = {
       source = "hashicorp/aws"
